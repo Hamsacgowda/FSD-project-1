@@ -1,119 +1,122 @@
-# 📚 Book Management API
+# Book Management System 📚
 
-A secure REST API for managing books with user authentication, built using **Node.js, Express, MongoDB, and JWT**.  
-Users can register, log in, and manage their personal collection of books.
+A full-stack MERN (MongoDB, Express.js, React.js, Node.js) project for managing books.  
+This application allows users to add, view, update, and delete book records with a clean UI and backend API integration.
 
----
+## Project Structure 📂
 
-## 🚀 Features
-- 🔐 **User Authentication** (JWT-based login & registration)
-- 👤 **Secure Routes** (only authenticated users can access their books)
-- 📖 **Book Management** (Add, View, Delete books)
-- 🗄 **MongoDB Database** integration with Mongoose
-- 🔑 Passwords are **hashed with bcrypt**
+FSD-project-1/  
+├── backend/  
+│   ├── models/            # Mongoose models (User, Record, etc.)  
+│   ├── routes/            # Express routes (auth, records)  
+│   ├── index.js           # Main backend server file  
+│   ├── .env               # Environment variables  
+│   └── package.json       # Backend dependencies  
+│  
+├── frontend/  
+│   ├── src/  
+│   │   ├── components/    # React components (Login, Register, Form, List)  
+│   │   ├── api.js         # Axios API calls  
+│   │   ├── App.js         # Main React app entry  
+│   │   └── index.js       # React DOM render file  
+│   └── package.json       # Frontend dependencies  
+│  
+└── README.md              # Project documentation
 
----
+## Backend Setup ⚙️
 
-## 🛠 Tech Stack
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB + Mongoose
-- **Authentication:** JWT (JSON Web Token)
-- **Security:** bcrypt for password hashing
-- **Other:** dotenv for environment variables, cors for cross-origin support
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
 
----
+2. Initialize a Node.js project (if not already done):
+   ```bash
+   npm init -y
 
-## 📂 Project Structure
-book/
-├── backend/ # Server (Node.js + Express + MongoDB)
-│ ├── models/ # Mongoose models (User, Book)
-│ ├── routes/ # API routes
-│ ├── .env # Environment variables
-│ ├── index.js # Main server file
-│ ├── package.json
-│
-├── frontend/ # Client (React)
-│ ├── public/ # Static files
-│ ├── src/ # React components & pages
-│ ├── package.json
-│
-├── README.md
+3. Install required dependencies:
+   ```bash
+   npm install express mongoose cors dotenv bcryptjs jsonwebtoken
 
----
+4. Install development dependencies (optional, for better workflow):
+    ```bash
+    npm install --save-dev nodemon
 
-## ⚙️ Setup Instructions
+5. Create a .env file in the backend folder and add the following:
+    ```bash
+    PORT=5000
+    MONGO_URI=your_mongodb_connection_string
+    JWT_SECRET=your_jwt_secret_key
+6. In package.json, update the scripts section for easier development:
+   ```json
+   "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+    }
+7. Start the backend server:
+   ```bash
+   npm run dev
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Hamsacgowda/FSD-project-1.git
-cd FSD-project-1
-🔧 Backend Setup
-
-1. Navigate to backend folder:
-
-cd backend
-
-2. Install dependencies:
-
-npm install
-
-3. Create a .env file and add:
-
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-PORT=5000
-
-4. Start backend:
-
-npm start
-
-
-Runs at: http://localhost:5000
-
-
-💻 Frontend Setup
+## Frontend Setup
 
 1. Navigate to frontend folder:
-
-cd frontend
-
+   ```bash
+   cd frontend
 
 2. Install dependencies:
+   ```bash
+   npm install
 
-npm install
+3. Start the React app:
+   ```bash
+   npm start
 
+Frontend will run at:
+```bash
+http://localhost:3000
 
-3. Start frontend:
+```
+## 🔗 API Endpoints
 
-npm start
+### Auth Routes
+- **POST** `/api/auth/register` → Register a new user  
+- **POST** `/api/auth/login` → Login user  
 
-Runs at: http://localhost:3000
+### Book Routes (Protected)
+- **POST** `/api/books` → Add a new book  
+- **GET** `/api/books` → Get all books  
+- **PUT** `/api/books/:id` → Update a book  
+- **DELETE** `/api/books/:id` → Delete a book
 
-📌 API Endpoints (Backend)
-Auth
+## Usage Guide
 
-POST /api/register → Register user
+Start the backend server → http://localhost:5000
 
-POST /api/login → Login & get JWT
+Start the frontend server → http://localhost:3000
 
-Books (Require JWT)
+Register a new user via the frontend
 
-GET /api/books → Fetch all user books
+Login with your credentials
 
-POST /api/books → Add new book
+Manage books (Add, View, Update, Delete) from the dashboard
 
-DELETE /api/books/:id → Delete book
+ 
+ ## Conclusion
 
-✅ Workflow
+This project is a simple Book Management System built with the MERN stack.
+It demonstrates:
 
-Run backend (http://localhost:5000)
+Authentication
 
-Run frontend (http://localhost:3000)
+JWT-based authorization
 
-Register/Login → Use token to manage books
+CRUD operations
 
----
+Frontend-backend integration
 
-⚡ This version matches your **MERN project** with both backend and frontend setup.  
+## You can extend it by:
 
-Do you want me to also add **frontend usage details** (like React pages/components and how they interact with API), or keep it backend-focused?
+Adding search & filter for books
+
+Adding profile management
+
+Deploying backend (Heroku/Render) and frontend (Netlify/Vercel)
